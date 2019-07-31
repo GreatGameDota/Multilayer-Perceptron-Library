@@ -49,14 +49,52 @@ export default class MatrixFunctions {
 		}
 		return temp, temp_shape;
 	}
-  multMatrices(matrixA, rowA, colA, matrixB) {
-    if (matrixA.length != matrixB.length) {
+	multMatrices (matrixA, rowA, colA, matrixB) {
+		if (matrixA.length != matrixB.length) {
 			console.log('MultMatrices Function error: Dimensions are not the same');
 		}
 		temp = [];
 		temp_shape = [ rowA, colA ];
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] * matrixB[i]);
+		}
+		return temp, temp_shape;
+	}
+	add (rowA, colA, rowB, colB, matrixA, matrixB) {
+		if (colA != colB && rowA != rowB) {
+			console.log('Add Function error: Dimension Mismatch');
+		}
+		temp = [];
+		add_i = 0;
+		if (matrixA.length > matrixB.length) {
+			temp_shape = [ rowA, colA ];
+			while (!(matrixA.length == matrixB.length - rowB * colB)) {
+				for (let i = 0; i < colA; i++) {
+					if (!(matrixA.length == matrixB.length - rowB * colB)) {
+						matrixB.push(matrixB[add_i]);
+					}
+				}
+				add_i++;
+			}
+			for (let i = 0; i < rowB * colB; i++) {
+				matrixB.shift();
+			}
+		} else {
+			temp_shape = [ rowB, colB ];
+			while (!(matrixB.length == matrixA.length - rowA * colA)) {
+				for (let i = 0; i < colB; i++) {
+					if (!(matrixB.length == matrixA.length - rowA * colA)) {
+						matrixA.push(matrixA[add_i]);
+					}
+				}
+				add_i++;
+			}
+			for (let i = 0; i < rowA * colA; i++) {
+				matrixA.shift();
+			}
+		}
+		for (let i = 0; i < matrixA.length; i++) {
+			temp.push(matrixA[i] + matrixB[i]);
 		}
 		return temp, temp_shape;
   }
