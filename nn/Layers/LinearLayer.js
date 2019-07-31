@@ -17,7 +17,11 @@ class LinearLayer {
 		if (inputShape != 0 && prevWeightsShape == null) {
 			n_in = inputShape;
 		} else {
-			n_in = prevWeightShape[0];
+			try {
+				n_in = prevWeightShape[0];
+			} catch (e) {
+				console.log('First layer must have an input shape');
+			}
 		}
 		n_out = units;
 		temp = [];
