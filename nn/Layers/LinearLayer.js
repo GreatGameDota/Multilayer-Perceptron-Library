@@ -44,7 +44,8 @@ class LinearLayer {
 		}
 		this.b_shape.push(n_out);
 		this.b_shape.push(0);
-	}
+  }
+  
 }
 function randGaussian () {
 	return Math.random() > 0.5 ? Math.sqrt(-2 * Math.log(Math.random())) : -1 * Math.sqrt(-2 * Math.log(Math.random()));
