@@ -124,6 +124,14 @@ export default class MatrixFunctions {
 		}
 		return temp, temp_shape;
 	}
+	square (matrix, row, col) {
+		temp = [];
+		temp_shape = [ row, col ];
+		for (let i = 0; i < matrix.length; i++) {
+			temp.push(matrix[i] * matrix[i]);
+		}
+		return temp, temp_shape;
+	}
 }
 function IX (x, y, cols) {
 	return y + x * cols;
