@@ -1,4 +1,10 @@
 export default class MatrixFunctions {
+	map (matrix, row, col, func) {
+		temp = [];
+		temp_shape = [ row, col ];
+		matrix.map((n) => temp.push(func(n)));
+		return temp, temp_shape;
+	}
 	dot (rowA, colA, rowB, colB, matrixA, matrixB) {
 		temp = [];
 		if (colA != rowB) {
