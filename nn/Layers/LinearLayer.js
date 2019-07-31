@@ -1,3 +1,5 @@
+import mf from '../utils/MatrixFunctions';
+
 class LinearLayer {
 	W = [];
 	W_shape = [];
@@ -44,8 +46,15 @@ class LinearLayer {
 		}
 		this.b_shape.push(n_out);
 		this.b_shape.push(0);
-  }
-  
+	}
+	linearForward (A_prev, row, col) {
+		this.A_prev = A_prev;
+		this.A_prev_shape = [ row, col ];
+		[ temp, temp_shape ] = mf.dot(this.W_shape[0], this.W_shape[1], row, col, this.W, A_prev);
+		[ temp2, temp2_shape ] = mf.add(temp_shape[0], temp_shape[1], this.b_shape[0], this.b_shape[1], temp, this.b);
+		this.Z = temp2;
+		this.Z_shape = temp2_shape;
+	}
 }
 function randGaussian () {
 	return Math.random() > 0.5 ? Math.sqrt(-2 * Math.log(Math.random())) : -1 * Math.sqrt(-2 * Math.log(Math.random()));

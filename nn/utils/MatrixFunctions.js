@@ -3,7 +3,7 @@ export default class MatrixFunctions {
 		temp = [];
 		temp_shape = [ row, col ];
 		matrix.map((n) => temp.push(func(n)));
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	dot (rowA, colA, rowB, colB, matrixA, matrixB) {
 		temp = [];
@@ -22,7 +22,7 @@ export default class MatrixFunctions {
 				temp.push(sum);
 			}
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	IX (x, y, cols) {
 		return y + x * cols;
@@ -37,7 +37,7 @@ export default class MatrixFunctions {
 				n += col;
 			}
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	sub (matrixA, rowA, colA, matrixB) {
 		if (matrixA.length != matrixB.length) {
@@ -48,7 +48,7 @@ export default class MatrixFunctions {
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] - matrixB[i]);
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	mult (matrix, row, col, n) {
 		temp = [];
@@ -56,7 +56,7 @@ export default class MatrixFunctions {
 		for (let i = 0; i < matrix.length; i++) {
 			temp.push(matrix[i] * n);
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	multMatrices (matrixA, rowA, colA, matrixB) {
 		if (matrixA.length != matrixB.length) {
@@ -67,7 +67,7 @@ export default class MatrixFunctions {
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] * matrixB[i]);
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	add (rowA, colA, rowB, colB, matrixA, matrixB) {
 		if (colA != colB && rowA != rowB) {
@@ -105,7 +105,7 @@ export default class MatrixFunctions {
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] + matrixB[i]);
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	sum (matrix, row, col, axis) {
 		// Axis meaning whether to sum x or y (row or col) (0 for y, 1 for x)
@@ -131,7 +131,7 @@ export default class MatrixFunctions {
 				temp.push(sum);
 			}
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 	square (matrix, row, col) {
 		temp = [];
@@ -139,6 +139,6 @@ export default class MatrixFunctions {
 		for (let i = 0; i < matrix.length; i++) {
 			temp.push(matrix[i] * matrix[i]);
 		}
-		return temp, temp_shape;
+		return [temp, temp_shape];
 	}
 }
