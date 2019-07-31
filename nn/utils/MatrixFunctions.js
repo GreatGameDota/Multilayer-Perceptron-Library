@@ -11,12 +11,15 @@ export default class MatrixFunctions {
 			for (let j = 0; j < resultCol; j++) {
 				sum = 0;
 				for (let k = 0; k < colA; k++) {
-					sum += matrixA[IX(j, k, colA)] * matrixB[IX(k, i, colB)];
+					sum += matrixA[this.IX(j, k, colA)] * matrixB[this.IX(k, i, colB)];
 				}
 				temp.push(sum);
 			}
 		}
 		return temp, temp_shape;
+	}
+	IX (x, y, cols) {
+		return y + x * cols;
 	}
 	transpose (matrix, row, col) {
 		temp = [];
@@ -132,7 +135,4 @@ export default class MatrixFunctions {
 		}
 		return temp, temp_shape;
 	}
-}
-function IX (x, y, cols) {
-	return y + x * cols;
 }
