@@ -1,5 +1,7 @@
 ### Simple Scratch Neural Network Library running the XOR problem.
 
+Originally created on Scratch: [Link](https://scratch.mit.edu/projects/320366953/)  
+  
 Base functions for layer math ported from python from NothingButNumpy blog series (below).  
 Matrix function library made by [GreatGameDota](https://github.com/GreatGameDota) .  
 Library inspired by Tensorflow.js  
