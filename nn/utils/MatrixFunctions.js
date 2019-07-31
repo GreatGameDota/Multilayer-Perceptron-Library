@@ -15,8 +15,22 @@ export default class MatrixFunctions {
         }
         temp.push(sum);
 			}
-		}
-	}
+    }
+    return temp, temp_shape;
+  }
+  transpose(matrix, row, col) {
+    temp = [];
+    temp_shape = [row, col];
+    for (let i = 0; i < col; i++){
+      n = 1;
+      for (let j = 0; j < row; j++){
+        temp.push(matrix[n + i]);
+        n += col;
+      }
+    }
+    return temp, temp_shape;
+  }
+  
 }
 function IX (x, y, cols) {
 	return y + x * cols;
