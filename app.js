@@ -1,0 +1,15 @@
+let X_train = [ 0, 0, 1, 1, 0, 1, 0, 1 ];
+let X_train_shape = [ 2, 4 ];
+let Y_train = [ 0, 1, 1, 0 ];
+let Y_train_shape = [ 1, 4 ];
+
+let learningRate = 1;
+let cost = 1;
+let costs = [];
+
+let model = new NeuralNetwork();
+model.addDenseLayer(5, X_train_shape[0], 'xavier');
+model.addDenseLayer(3, 0, 'xavier');
+model.addDenseLayer(1, 0, 'xavier');
+model.loadActivationLayers();
+
