@@ -1,4 +1,4 @@
-# Simple Scratch Neural Network Library running the XOR problem.
+# Javascript Neural Network Library v0.1.4
 
 ### Originally created on Scratch: [Link](https://scratch.mit.edu/projects/320366953/)  
   
