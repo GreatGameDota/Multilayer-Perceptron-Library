@@ -114,15 +114,16 @@ export default class MatrixFunctions {
 			temp_shape = [ 1, col ];
 			for (let i = 0; i < col; i++) {
 				sum = 0;
-				for (let j = 0; j < row; j += col) {
-					sum += matrix[i + j];
+				n = 0;
+				for (let j = 0; j < row; j++) {
+					sum += matrix[i + n];
+					n += col;
 				}
 				temp.push(sum);
 			}
 		}
 		return temp, temp_shape;
-  }
-  
+	}
 }
 function IX (x, y, cols) {
 	return y + x * cols;
