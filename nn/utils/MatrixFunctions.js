@@ -40,6 +40,25 @@ export default class MatrixFunctions {
 			temp.push(matrixA[i] - matrixB[i]);
 		}
 		return temp, temp_shape;
+	}
+	mult (matrix, row, col, n) {
+		temp = [];
+		temp_shape = [ row, col ];
+		for (let i = 0; i < matrix.length; i++) {
+			temp.push(matrix[i] * n);
+		}
+		return temp, temp_shape;
+	}
+  multMatrices(matrixA, rowA, colA, matrixB) {
+    if (matrixA.length != matrixB.length) {
+			console.log('MultMatrices Function error: Dimensions are not the same');
+		}
+		temp = [];
+		temp_shape = [ rowA, colA ];
+		for (let i = 0; i < matrixA.length; i++) {
+			temp.push(matrixA[i] * matrixB[i]);
+		}
+		return temp, temp_shape;
   }
   
 }
