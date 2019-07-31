@@ -97,6 +97,30 @@ export default class MatrixFunctions {
 			temp.push(matrixA[i] + matrixB[i]);
 		}
 		return temp, temp_shape;
+	}
+	sum (matrix, row, col, axis) {
+		// Axis meaning whether to sum x or y (row or col) (0 for y, 1 for x)
+		temp = [];
+		if (axis == 1) {
+			temp_shape = [ row, 1 ];
+			for (let i = 0; i < row; i++) {
+				sum = 0;
+				for (let j = 0; j < col; j++) {
+					sum += matrix[i * col + j];
+				}
+				temp.push(sum);
+			}
+		} else {
+			temp_shape = [ 1, col ];
+			for (let i = 0; i < col; i++) {
+				sum = 0;
+				for (let j = 0; j < row; j += col) {
+					sum += matrix[i + j];
+				}
+				temp.push(sum);
+			}
+		}
+		return temp, temp_shape;
   }
   
 }
