@@ -35,16 +35,16 @@ class NeuralNetwork {
 				if (i == 0) {
 					this.linearLayers[i].linearForward(X_train, X_train_shape[0], X_train_shape[1]);
 				} else {
-					let A = this.activationLayers[i - 1].A;
+					let A = [ ...this.activationLayers[i - 1].A ];
 					let A_shape = this.activationLayers[i - 1].A_shape;
 					this.linearLayers[i].linearForward(A, A_shape[0], A_shape[1]);
 				}
-				let Z = this.linearLayers[i].Z;
+				let Z = [ ...this.linearLayers[i].Z ];
 				let Z_shape = this.linearLayers[i].Z_shape;
 				this.activationLayers[i].activationForward(Z, Z_shape[0], Z_shape[1]);
 			}
 			// Compute Cost
-			let A = this.activationLayers[this.linearLayers.length - 1].A;
+			let A = [ ...this.activationLayers[this.linearLayers.length - 1].A ];
 			let A_shape = this.activationLayers[this.linearLayers.length - 1].A_shape;
 			let [ dA, dA_shape ] = this.computeCost(Y_train, Y_train_shape[0], Y_train_shape[1], A, A_shape[0], A_shape[1]);
 			// Backward
@@ -52,11 +52,11 @@ class NeuralNetwork {
 				if (i == this.linearLayers.length - 1) {
 					this.activationLayers[i].activationBackward(dA, dA_shape[0], dA_shape[1]);
 				} else {
-					let dA_prev = this.linearLayers[i + 1].dA_prev;
+					let dA_prev = [ ...this.linearLayers[i + 1].dA_prev ];
 					let dA_prev_shape = this.linearLayers[i + 1].dA_prev_shape;
 					this.activationLayers[i].activationBackward(dA_prev, dA_prev_shape[0], dA_prev_shape[1]);
 				}
-				let dZ = this.activationLayers[i].dZ;
+				let dZ = [ ...this.activationLayers[i].dZ ];
 				let dZ_shape = this.activationLayers[i].dZ_shape;
 				this.linearLayers[i].linearBackward(dZ, dZ_shape[0], dZ_shape[1]);
 			}
