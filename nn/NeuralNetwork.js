@@ -67,7 +67,23 @@ class NeuralNetwork {
 			this.epoch++;
 		}
 	}
-	predict () {
-		//TODO
+	predict (X, row, col) {
+		let n = this.linearLayers.length - 1;
+		let [ temp, temp_shape ] = mf.transpose(X, row, col);
+		this.linearLayers[0].linearForward(temp, temp_shape[0], temp_shape[1]);
+		let Z = [ ...this.linearLayers[0].Z ];
+		let Z_shape = this.linearLayers[0].Z_shape;
+		this.activationLayers[0].activationForward(Z, Z_shape[0], Z_shape[1]);
+		for (let i = 1; i < n; i++) {
+			let A = [ ...this.activationLayers[i - 1].A ];
+			let A_shape = this.activationLayers[i - 1].A_shape;
+			this.linearLayers[i].linearForward(A, A_shape[0], A_shape[1]);
+			Z = [ ...this.linearLayers[i].Z ];
+			Z_shape = this.linearLayers[i].Z_shape;
+			this.activationLayers[i].activationForward(Z, Z_shape[0], Z_shape[1]);
+		}
+		let pred = [ ...this.activationLayers[this.activationLayers.length - 1].A ];
+		let pred_shape = this.activationLayers[this.activationLayers.length - 1].A_shape;
+		return [ pred, pred_shape ];
 	}
 }
