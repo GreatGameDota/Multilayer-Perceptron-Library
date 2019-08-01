@@ -1,5 +1,8 @@
 let mf = new MatrixFunctions();
-
+/*
+	Made by GreatGameDota
+	https://github.com/GreatGameDota
+*/
 class NeuralNetwork {
 	learningRate = 0;
 	cost = 1;
@@ -7,7 +10,7 @@ class NeuralNetwork {
 	epoch = 0;
 	linearLayers = [];
 	activationLayers = [];
-	constructor(lr) {
+	constructor (lr) {
 		this.learningRate = lr;
 	}
 	addDenseLayer (units, inputShape, weight_init) {
@@ -17,7 +20,7 @@ class NeuralNetwork {
 	}
 	computeCost (Y, rowY, colY, Y_hat, rowY2, colY2) {
 		let m = colY;
-		let [ temp, temp_shape ] = mf.sub(Y, rowY, colY, Y_hat, rowY2, colY2);
+		let [ temp, temp_shape ] = mf.sub(Y, rowY, colY, Y_hat);
 		let [ temp2, temp2_shape ] = mf.square(temp, temp_shape[0], temp_shape[1]);
 		let [ temp3, temp3_shape ] = mf.sum(temp2, temp2_shape[0], temp2_shape[1], 1);
 		this.cost = 1 / (2 * m);

@@ -44,13 +44,14 @@ class LinearLayer {
 			this.b.push(0);
 		}
 		this.b_shape.push(n_out);
-		this.b_shape.push(0);
+		this.b_shape.push(1);
 	}
 	linearForward (A_prev, row, col) {
 		this.A_prev = A_prev;
 		this.A_prev_shape = [ row, col ];
 		let [ temp, temp_shape ] = mf.dot(this.W_shape[0], this.W_shape[1], row, col, this.W, A_prev);
-		let [ temp2, temp2_shape ] = mf.add(temp_shape[0], temp_shape[1], this.b_shape[0], this.b_shape[1], temp, this.b);
+		let b = [ ...this.b ];
+		let [ temp2, temp2_shape ] = mf.add(temp_shape[0], temp_shape[1], this.b_shape[0], this.b_shape[1], temp, b);
 		this.Z = temp2;
 		this.Z_shape = temp2_shape;
 	}
@@ -69,11 +70,11 @@ class LinearLayer {
 	}
 	updateParams (learningRate) {
 		let [ temp, temp_shape ] = mf.mult(this.dW, this.dW_shape[0], this.dW_shape[1], learningRate);
-		let [ temp2, temp2_shape ] = mf.sub(this.W, this.W_shape[0], this.W_shape[1], temp, temp_shape[0], temp_shape[1]);
+		let [ temp2, temp2_shape ] = mf.sub(this.W, this.W_shape[0], this.W_shape[1], temp);
 		this.W = temp2;
 		this.W_shape = temp2_shape;
 		[ temp, temp_shape ] = mf.mult(this.db, this.db_shape[0], this.db_shape[1], learningRate);
-		[ temp2, temp2_shape ] = mf.sub(this.b, this.b_shape[0], this.b_shape[1], temp, temp_shape[0], temp_shape[1]);
+		[ temp2, temp2_shape ] = mf.sub(this.b, this.b_shape[0], this.b_shape[1], temp);
 		this.b = temp2;
 		this.b_shape = temp2_shape;
 	}
