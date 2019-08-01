@@ -1,4 +1,9 @@
 class NeuralNetwork {
+	constructor (lr) {
+		learningRate = lr;
+	}
+	cost = 1;
+	costs = [];
 	epoch = 0;
 	linearLayers = [];
 	activationLayers = [];
@@ -11,7 +16,7 @@ class NeuralNetwork {
 			this.activationLayers.push(new ActivationLayer());
 		}
 	}
-	train (epochs, learningRate) {
+	train (epochs) {
 		//TODO
 	}
 }
