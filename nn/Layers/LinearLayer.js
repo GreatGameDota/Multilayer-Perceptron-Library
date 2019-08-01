@@ -55,6 +55,19 @@ class LinearLayer {
 		this.Z = temp2;
 		this.Z_shape = temp2_shape;
 	}
+	linearBackward (upstream_grad, row, col) {
+		[ temp, temp_shape ] = mf.transpose(this.A_prev, this.A_prev_shape[0], this.A_prev_shape[1]);
+		[ temp2, temp2_shape ] = mf.dot(row, col, temp_shape[0], temp_shape[1], upstream_grad, temp);
+		this.dW = temp2;
+		this.dW_shape = temp2_shape;
+		[ temp3, temp3_shape ] = mf.sum(upstream_grad, row, col, 1);
+		this.db = temp3;
+		this.db_shape = temp3_shape;
+		[ temp4, temp4_shape ] = mf.transpose(this.W, this.W_shape[0], this.W_shape[1]);
+		[ temp5, temp5_shape ] = mf.dot(temp4_shape[0], temp4_shape[1], row, col, temp4, upstream_grad);
+		this.dA_prev = temp5;
+		this.dA_prev_shape = temp5_shape;
+	}
 }
 function randGaussian () {
 	return Math.random() > 0.5 ? Math.sqrt(-2 * Math.log(Math.random())) : -1 * Math.sqrt(-2 * Math.log(Math.random()));
