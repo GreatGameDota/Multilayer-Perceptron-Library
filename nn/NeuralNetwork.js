@@ -67,4 +67,7 @@ class NeuralNetwork {
 			this.epoch++;
 		}
 	}
+	predict () {
+		//TODO
+	}
 }
