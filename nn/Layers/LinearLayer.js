@@ -68,6 +68,16 @@ class LinearLayer {
 		this.dA_prev = temp5;
 		this.dA_prev_shape = temp5_shape;
 	}
+	updateParams (learningRate) {
+		[ temp, temp_shape ] = mf.mult(this.dW, this.dW_shape[0], this.dW_shape[1], learningRate);
+		[ temp2, temp2_shape ] = mf.sub(this.W, this.W_shape[0], this.W_shape[1], temp, temp_shape[0], temp_shape[1]);
+		this.W = temp2;
+		this.W_shape = temp2_shape;
+		[ temp, temp_shape ] = mf.mult(this.db, this.db_shape[0], this.db_shape[1], learningRate);
+		[ temp2, temp2_shape ] = mf.sub(this.b, this.b_shape[0], this.b_shape[1], temp, temp_shape[0], temp_shape[1]);
+		this.b = temp2;
+		this.b_shape = temp2_shape;
+	}
 }
 function randGaussian () {
 	return Math.random() > 0.5 ? Math.sqrt(-2 * Math.log(Math.random())) : -1 * Math.sqrt(-2 * Math.log(Math.random()));
