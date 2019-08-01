@@ -1,8 +1,12 @@
 import mf from './utils/MatrixFunctions';
 
 class NeuralNetwork {
-	constructor (lr) {
+	constructor (lr, X, X_shape, Y, Y_shape) {
 		learningRate = lr;
+		X_train = X;
+		X_train_shape = X_shape;
+		Y_train = Y;
+		Y_train_shape = Y_shape;
 	}
 	cost = 1;
 	costs = [];
@@ -14,7 +18,7 @@ class NeuralNetwork {
 		this.linearLayers.push(new LinearLayer(units, inputShape, weight_init, prevWeightShape));
 		this.activationLayers.push(new ActivationLayer());
 	}
-	computCost (Y, rowY, colY, Y_hat, rowY2, colY2) {
+	computeCost (Y, rowY, colY, Y_hat, rowY2, colY2) {
 		m = colY;
 		[ temp, temp_shape ] = mf.sub(Y, rowY, colY, Y_hat, rowY2, colY2);
 		[ temp2, temp2_shape ] = mf.square(temp, temp_shape[0], temp_shape[1]);
@@ -25,6 +29,42 @@ class NeuralNetwork {
 		return [ temp4, temp4_shape ];
 	}
 	train (epochs) {
-		//TODO
+		for (let k = 0; k < epochs; k++) {
+			// Forward
+			for (let i = 0; i < this.linearLayers.length; i++) {
+				if (i == 0) {
+					this.linearLayers[i].linearForward(X_train, X_train_shape[0], X_train_shape[1]);
+				} else {
+					A = this.activationLayers[i - 1].A;
+					A_shape = this.activationLayers[i - 1].A_shape;
+					this.linearLayers[i].linearForward(A, A_shape[0], A_shape[1]);
+				}
+				Z = this.linearLayers[i].Z;
+				Z_shape = this.linearLayers[i].Z_shape;
+				this.activationLayers[i].activationForward(Z, Z_shape[0], Z_shape[1]);
+			}
+			// Compute Cost
+			A = this.activationLayers[this.linearLayers.length - 1].A;
+			A_shape = this.activationLayers[this.linearLayers.length - 1].A_shape;
+			[ dA, dA_shape ] = this.computeCost(Y_train, Y_train_shape[0], Y_train_shape[1], A, A_shape[0], A_shape[1]);
+			// Backward
+			for (let i = this.linearLayers.length - 1; i >= 0; i--) {
+				if (i == this.linearLayers.length - 1) {
+					this.activationLayers[i].activationBackward(dA, dA_shape[0], dA_shape[1]);
+				} else {
+					dA_prev = this.linearLayers[i + 1].dA_prev;
+					dA_prev_shape = this.linearLayers[i + 1].dA_prev_shape;
+					this.activationLayers[i].activationBackward(dA_prev, dA_prev_shape[0], dA_prev_shape[1]);
+				}
+				dZ = this.activationLayers[i].dZ;
+				dZ_shape = this.activationLayers[i].dZ_shape;
+				this.linearLayers[i].linearBackward(dZ, dZ_shape[0], dZ_shape[1]);
+			}
+			// Update Weights and Biases
+			for (let i = this.linearLayers.length - 1; i >= 0; i--) {
+				this.linearLayers[i].updateParams(learningRate);
+			}
+			this.epoch++;
+		}
 	}
 }
