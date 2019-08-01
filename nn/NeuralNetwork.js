@@ -2,14 +2,14 @@ let mf = new MatrixFunctions();
 
 class NeuralNetwork {
 	learningRate = 0;
-	constructor (lr) {
-		this.learningRate = lr;
-	}
 	cost = 1;
 	costs = [];
 	epoch = 0;
 	linearLayers = [];
 	activationLayers = [];
+	constructor(lr) {
+		this.learningRate = lr;
+	}
 	addDenseLayer (units, inputShape, weight_init) {
 		let prevWeightShape = this.linearLayers.length > 0 ? this.linearLayers[this.linearLayers.length - 1].W_shape : null;
 		this.linearLayers.push(new LinearLayer(units, inputShape, weight_init, prevWeightShape));
