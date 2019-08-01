@@ -7,5 +7,4 @@ let model = new NeuralNetwork(1);
 model.addDenseLayer(5, X_train_shape[0], 'xavier');
 model.addDenseLayer(3, 0, 'xavier');
 model.addDenseLayer(1, 0, 'xavier');
-model.loadActivationLayers();
 
