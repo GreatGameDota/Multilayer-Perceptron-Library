@@ -74,7 +74,7 @@ class NeuralNetwork {
 		let Z = [ ...this.linearLayers[0].Z ];
 		let Z_shape = this.linearLayers[0].Z_shape;
 		this.activationLayers[0].activationForward(Z, Z_shape[0], Z_shape[1]);
-		for (let i = 1; i < n; i++) {
+		for (let i = 1; i <= n; i++) {
 			let A = [ ...this.activationLayers[i - 1].A ];
 			let A_shape = this.activationLayers[i - 1].A_shape;
 			this.linearLayers[i].linearForward(A, A_shape[0], A_shape[1]);
