@@ -1,21 +1,21 @@
-export default class MatrixFunctions {
+class MatrixFunctions {
 	map (matrix, row, col, func) {
-		temp = [];
-		temp_shape = [ row, col ];
+		let temp = [];
+		let temp_shape = [ row, col ];
 		matrix.map((n) => temp.push(func(n)));
 		return [temp, temp_shape];
 	}
 	dot (rowA, colA, rowB, colB, matrixA, matrixB) {
-		temp = [];
+		let temp = [];
 		if (colA != rowB) {
 			console.log('Dot Function error: Dimension Mismatch');
 		}
-		resultRow = rowA;
-		resultCol = colB;
-		temp_shape = [ resultRow, resultCol ];
+		let resultRow = rowA;
+		let resultCol = colB;
+		let temp_shape = [ resultRow, resultCol ];
 		for (let i = 0; i < resultRow; i++) {
 			for (let j = 0; j < resultCol; j++) {
-				sum = 0;
+				let sum = 0;
 				for (let k = 0; k < colA; k++) {
 					sum += matrixA[this.IX(j, k, colA)] * matrixB[this.IX(k, i, colB)];
 				}
@@ -28,10 +28,10 @@ export default class MatrixFunctions {
 		return y + x * cols;
 	}
 	transpose (matrix, row, col) {
-		temp = [];
-		temp_shape = [ row, col ];
+		let temp = [];
+		let temp_shape = [ row, col ];
 		for (let i = 0; i < col; i++) {
-			n = 0;
+			let n = 0;
 			for (let j = 0; j < row; j++) {
 				temp.push(matrix[n + i]);
 				n += col;
@@ -43,16 +43,16 @@ export default class MatrixFunctions {
 		if (matrixA.length != matrixB.length) {
 			console.log('Sub Function error: Dimensions are not the same');
 		}
-		temp = [];
-		temp_shape = [ rowA, colA ];
+		let temp = [];
+		let temp_shape = [ rowA, colA ];
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] - matrixB[i]);
 		}
 		return [temp, temp_shape];
 	}
 	mult (matrix, row, col, n) {
-		temp = [];
-		temp_shape = [ row, col ];
+		let temp = [];
+		let temp_shape = [ row, col ];
 		for (let i = 0; i < matrix.length; i++) {
 			temp.push(matrix[i] * n);
 		}
@@ -62,8 +62,8 @@ export default class MatrixFunctions {
 		if (matrixA.length != matrixB.length) {
 			console.log('MultMatrices Function error: Dimensions are not the same');
 		}
-		temp = [];
-		temp_shape = [ rowA, colA ];
+		let temp = [];
+		let temp_shape = [ rowA, colA ];
 		for (let i = 0; i < matrixA.length; i++) {
 			temp.push(matrixA[i] * matrixB[i]);
 		}
@@ -73,8 +73,9 @@ export default class MatrixFunctions {
 		if (colA != colB && rowA != rowB) {
 			console.log('Add Function error: Dimension Mismatch');
 		}
-		temp = [];
-		add_i = 0;
+		let temp = [];
+		let temp_shape;
+		let add_i = 0;
 		if (matrixA.length > matrixB.length) {
 			temp_shape = [ rowA, colA ];
 			while (!(matrixA.length == matrixB.length - rowB * colB)) {
@@ -109,11 +110,12 @@ export default class MatrixFunctions {
 	}
 	sum (matrix, row, col, axis) {
 		// Axis meaning whether to sum x or y (row or col) (0 for y, 1 for x)
-		temp = [];
+		let temp = [];
+		let temp_shape;
 		if (axis == 1) {
 			temp_shape = [ row, 1 ];
 			for (let i = 0; i < row; i++) {
-				sum = 0;
+				let sum = 0;
 				for (let j = 0; j < col; j++) {
 					sum += matrix[i * col + j];
 				}
@@ -122,8 +124,8 @@ export default class MatrixFunctions {
 		} else {
 			temp_shape = [ 1, col ];
 			for (let i = 0; i < col; i++) {
-				sum = 0;
-				n = 0;
+				let sum = 0;
+				let n = 0;
 				for (let j = 0; j < row; j++) {
 					sum += matrix[i + n];
 					n += col;
@@ -134,8 +136,8 @@ export default class MatrixFunctions {
 		return [temp, temp_shape];
 	}
 	square (matrix, row, col) {
-		temp = [];
-		temp_shape = [ row, col ];
+		let temp = [];
+		let temp_shape = [ row, col ];
 		for (let i = 0; i < matrix.length; i++) {
 			temp.push(matrix[i] * matrix[i]);
 		}
