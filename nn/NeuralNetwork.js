@@ -13,10 +13,10 @@ class NeuralNetwork {
 	constructor (lr) {
 		this.learningRate = lr;
 	}
-	addDenseLayer (units, inputShape, weight_init) {
+	addDenseLayer (units, inputShape, weight_init, activation) {
 		let prevWeightShape = this.linearLayers.length > 0 ? this.linearLayers[this.linearLayers.length - 1].W_shape : null;
 		this.linearLayers.push(new LinearLayer(units, inputShape, weight_init, prevWeightShape));
-		this.activationLayers.push(new ActivationLayer());
+		this.activationLayers.push(new ActivationLayer(activation));
 	}
 	computeCost (Y, rowY, colY, Y_hat, rowY2, colY2) {
 		let m = colY;

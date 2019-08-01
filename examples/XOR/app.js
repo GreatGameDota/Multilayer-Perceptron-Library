@@ -4,9 +4,9 @@ let Y_train = [ 0, 1, 1, 0 ];
 let Y_train_shape = [ 1, 4 ];
 
 let model = new NeuralNetwork(1);
-model.addDenseLayer(5, X_train_shape[0], 'xavier');
-model.addDenseLayer(3, 0, 'xavier');
-model.addDenseLayer(1, 0, 'xavier');
+model.addDenseLayer(5, X_train_shape[0], 'xavier', 'sigmoid');
+model.addDenseLayer(3, 0, 'xavier', 'sigmoid');
+model.addDenseLayer(1, 0, 'xavier', 'sigmoid');
 // Default test data
 // model.linearLayers[0].W = [ -0.57367331, -0.61395474, -0.3683933, 0.61290852, -0.09087733, 0.63146443 ];
 // model.linearLayers[1].W = [ -0.22940096, 1.34164479, -0.57717743 ];
