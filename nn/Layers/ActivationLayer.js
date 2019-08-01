@@ -9,7 +9,8 @@ class ActivationLayer {
 		this.A_shape = temp_shape;
 	}
 	activationBackward (upstream_grad, row, col) {
-		let [ temp, temp_shape ] = mf.map(this.A, this.A_shape[0], this.A_shape[1], this.dSigmoid);
+		let A = [ ...this.A ];
+		let [ temp, temp_shape ] = mf.map(A, this.A_shape[0], this.A_shape[1], this.dSigmoid);
 		let [ temp2, temp2_shape ] = mf.multMatrices(upstream_grad, row, col, temp, temp_shape[0], temp_shape[1]);
 		this.dZ = temp2;
 		this.dZ_shape = temp2_shape;

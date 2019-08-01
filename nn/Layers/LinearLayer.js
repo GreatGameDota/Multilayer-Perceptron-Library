@@ -49,32 +49,39 @@ class LinearLayer {
 	linearForward (A_prev, row, col) {
 		this.A_prev = A_prev;
 		this.A_prev_shape = [ row, col ];
-		let [ temp, temp_shape ] = mf.dot(this.W_shape[0], this.W_shape[1], row, col, this.W, A_prev);
+		let W = [ ...this.W ];
+		let [ temp, temp_shape ] = mf.dot(this.W_shape[0], this.W_shape[1], row, col, W, A_prev);
 		let b = [ ...this.b ];
 		let [ temp2, temp2_shape ] = mf.add(temp_shape[0], temp_shape[1], this.b_shape[0], this.b_shape[1], temp, b);
 		this.Z = temp2;
 		this.Z_shape = temp2_shape;
 	}
 	linearBackward (upstream_grad, row, col) {
-		let [ temp, temp_shape ] = mf.transpose(this.A_prev, this.A_prev_shape[0], this.A_prev_shape[1]);
+		let A_prev = [ ...this.A_prev ];
+		let [ temp, temp_shape ] = mf.transpose(A_prev, this.A_prev_shape[0], this.A_prev_shape[1]);
 		let [ temp2, temp2_shape ] = mf.dot(row, col, temp_shape[0], temp_shape[1], upstream_grad, temp);
 		this.dW = temp2;
 		this.dW_shape = temp2_shape;
 		let [ temp3, temp3_shape ] = mf.sum(upstream_grad, row, col, 1);
 		this.db = temp3;
 		this.db_shape = temp3_shape;
-		let [ temp4, temp4_shape ] = mf.transpose(this.W, this.W_shape[0], this.W_shape[1]);
+		let W = [ ...this.W ];
+		let [ temp4, temp4_shape ] = mf.transpose(W, this.W_shape[0], this.W_shape[1]);
 		let [ temp5, temp5_shape ] = mf.dot(temp4_shape[0], temp4_shape[1], row, col, temp4, upstream_grad);
 		this.dA_prev = temp5;
 		this.dA_prev_shape = temp5_shape;
 	}
 	updateParams (learningRate) {
-		let [ temp, temp_shape ] = mf.mult(this.dW, this.dW_shape[0], this.dW_shape[1], learningRate);
-		let [ temp2, temp2_shape ] = mf.sub(this.W, this.W_shape[0], this.W_shape[1], temp);
+		let dW = [ ...this.dW ];
+		let W = [ ...this.W ];
+		let [ temp, temp_shape ] = mf.mult(dW, this.dW_shape[0], this.dW_shape[1], learningRate);
+		let [ temp2, temp2_shape ] = mf.sub(W, this.W_shape[0], this.W_shape[1], temp);
 		this.W = temp2;
 		this.W_shape = temp2_shape;
-		[ temp, temp_shape ] = mf.mult(this.db, this.db_shape[0], this.db_shape[1], learningRate);
-		[ temp2, temp2_shape ] = mf.sub(this.b, this.b_shape[0], this.b_shape[1], temp);
+		let db = [ ...this.db ];
+		let b = [ ...this.b ];
+		[ temp, temp_shape ] = mf.mult(db, this.db_shape[0], this.db_shape[1], learningRate);
+		[ temp2, temp2_shape ] = mf.sub(b, this.b_shape[0], this.b_shape[1], temp);
 		this.b = temp2;
 		this.b_shape = temp2_shape;
 	}

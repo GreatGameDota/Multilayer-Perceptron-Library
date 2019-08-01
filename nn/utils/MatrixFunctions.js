@@ -8,7 +8,6 @@ class MatrixFunctions {
 	dot (rowA, colA, rowB, colB, matrixA, matrixB) {
 		if (colA != rowB) {
 			console.log('Dot Function error: Dimension Mismatch');
-			consoleg.log('error out');
 		}
 		let temp = [];
 		let temp_shape = [ rowA, colB ];
@@ -38,7 +37,6 @@ class MatrixFunctions {
 	sub (matrixA, rowA, colA, matrixB) {
 		if (matrixA.length != matrixB.length) {
 			console.log('Sub Function error: Dimensions are not the same');
-			consolge.log('error out');
 		}
 		let temp = [];
 		let temp_shape = [ rowA, colA ];
