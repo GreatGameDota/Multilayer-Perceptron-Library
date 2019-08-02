@@ -17,9 +17,12 @@ function setup () {
 	}
 	let xs = inputs;
 	let xs_shape = [ xs.length / 2, 2 ];
-	let X_train = [ 0, 0, 1, 1, 0, 1, 0, 1 ];
+	// let XY = [ [ 0, 0 ], [ 0, 1 ], [ 1, 0 ], [ 1, 1 ] ];
+	let X_train = [ 0, 0, 1, 1,
+		              0, 1, 0, 1 ];
 	let X_train_shape = [ 2, 4 ];
-	let Y_train = [ 1, 0, 0, 1 ];
+	// let Y_train = [ 0, 1, 1, 0 ]; Wanted Outputs
+	let Y_train = [ 1, 0, 0, 1 ]; // Flipped b/c p5js axis are flipped
 	let Y_train_shape = [ 1, 4 ];
 
 	model = new NeuralNetwork(1);
