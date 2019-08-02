@@ -9,12 +9,15 @@ Library inspired by Tensorflow.js
 ## Examples  
 
 ### XOR  
+
 | Input1 | Input2 | Output |  
 |--------|--------|--------|  
 | 0      | 0      | 0      |  
 | 0      | 1      | 1      |  
 | 1      | 0      | 1      |  
 | 1      | 1      | 0      |
+
+
 
 ## Links/Resources  
 
