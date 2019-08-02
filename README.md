@@ -17,7 +17,7 @@ Library inspired by Tensorflow.js
 | 1      | 0      | 1      |  
 | 1      | 1      | 0      |
 
-
+![https://github.com/GreatGameDota/neural-network-library/blob/master/images/XORVisual.PNG]
 
 ## Links/Resources  
 
