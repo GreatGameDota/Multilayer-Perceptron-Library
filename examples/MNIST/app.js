@@ -63,14 +63,16 @@ function resume () {
 		console.log('Cost at epoch ' + model.epoch + ': ' + model.cost);
 	}
 	console.log('Done Training!');
-	let rand = Math.floor(Math.random() * lines.length);
-	newLines = [ ...lines[rand] ];
-	newLines.shift();
-	let xs = newLines;
-	let xs_shape = [ 1, 784 ];
-	console.log('Expected output: ' + lines[rand][0]);
-	[ pred, pred_shape ] = model.predict(xs, xs_shape[0], xs_shape[1]);
-	console.log('Output: ' + scaleNum(pred[0], 0, 1, 0, 9));
+	for (let i = 0; i < 10; i++) {
+		let rand = Math.floor(Math.random() * lines.length);
+		newLines = [ ...lines[rand] ];
+		newLines.shift();
+		let xs = newLines;
+		let xs_shape = [ 1, 784 ];
+		console.log('Expected output: ' + lines[rand][0]);
+		[ pred, pred_shape ] = model.predict(xs, xs_shape[0], xs_shape[1]);
+		console.log('Output: ' + scaleNum(pred[0], 0, 1, 0, 9));
+	}
 	loop();
 }
 function scaleNum (n, nMin, nMax, sMin, sMax) {
