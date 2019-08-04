@@ -15,6 +15,12 @@ class ActivationLayer {
 		} else if (activation == 'arctan') {
 			this.activationFunc = this.arctan;
 			this.activationFuncDeriv = this.dArctan;
+		} else if (activation == 'relu') {
+			this.activationFunc = this.relu;
+			this.activationFuncDeriv = this.dRelu;
+		} else if (activation == 'softplus') {
+			this.activationFunc = this.softplus;
+			this.activationFuncDeriv = this.dSoftplus;
 		} else {
 			console.log('ActivationLayer Error: Please specify an activation function');
 		}
@@ -49,4 +55,19 @@ class ActivationLayer {
 	dArctan (num) {
 		return 1 / (num * num + 1);
 	}
+	relu (num) {
+		return num > 0 ? num : 0;
+	}
+	dRelu (num) {
+		return num > 0 ? 1 : 0;
+	}
+	softplus (num) {
+		return logBase(1 + Math.pow(Math.E, num), Math.E);
+	}
+	dSoftplus (num) {
+		return this.sigmoid(num);
+	}
+}
+function logBase (n, b) {
+	return Math.log(n) / Math.log(b);
 }
