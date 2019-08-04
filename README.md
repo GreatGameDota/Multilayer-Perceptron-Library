@@ -26,7 +26,7 @@ Library inspired by Tensorflow.js
 Download csv files: [Link](https://www.kaggle.com/oddrationale/mnist-in-csv)  
 After downloading put the files in a folder called 'csv' in the MNIST folder then rename the files to '.txt'.
 
-<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/MNIST.png?raw=true' alt='MNIST' title='MNIST' width='200px' height='200px'>
+<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/MNIST.png?raw=true' alt='MNIST' title='MNIST'>
 
 
 ## Links/Resources  
