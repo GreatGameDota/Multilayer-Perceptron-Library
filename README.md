@@ -5,7 +5,9 @@
 Base functions for layer math ported from python from NothingButNumpy blog series (below).  
 Matrix function library made by [GreatGameDota](https://github.com/GreatGameDota) .  
 Library inspired by Tensorflow.js  
-  
+
+<i>Disclaimer: This library is very slow for large data sets and can only handle one output</i>
+
 ## Examples  
 
 ### XOR  
