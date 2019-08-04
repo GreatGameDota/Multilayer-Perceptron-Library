@@ -28,6 +28,7 @@ After downloading put the files in a folder called 'csv' in the MNIST folder the
 
 <img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/MNIST.png?raw=true' alt='MNIST' title='MNIST'>
 
+<i>Disclaimer: This took 5-6 hours to produce with dataAmount set to 1000</i>
 
 ## Links/Resources  
 
