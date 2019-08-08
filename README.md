@@ -32,7 +32,7 @@ After downloading put the files in a folder called 'csv' in the MNIST folder the
 
 ### Classification
 
-<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/Classification.png?raw=true' alt='Classification' title='Classification'>
+<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/Classification.png?raw=true' alt='Classification' title='Classification' width='200px' height='200px'>
 
 Inspired by [A Neural Network Playground](https://playground.tensorflow.org) by Tensorflow
 
