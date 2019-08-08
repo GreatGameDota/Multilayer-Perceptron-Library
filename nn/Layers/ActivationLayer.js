@@ -65,7 +65,7 @@ class ActivationLayer {
 		return logBase(1 + Math.pow(Math.E, num), Math.E);
 	}
 	dSoftplus (num) {
-		return this.sigmoid(num);
+		return 1 / (1 + Math.pow(Math.E, -1 * num)); // sigmoid
 	}
 }
 function logBase (n, b) {

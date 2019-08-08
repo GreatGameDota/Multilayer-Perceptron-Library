@@ -1,4 +1,4 @@
-# Javascript Neural Network Library v0.1.4
+# Javascript Neural Network Library
 
 ## Originally created on [Scratch](https://scratch.mit.edu/projects/320366953/)  
   
@@ -28,7 +28,13 @@ After downloading put the files in a folder called 'csv' in the MNIST folder the
 
 <img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/MNIST.png?raw=true' alt='MNIST' title='MNIST'>
 
-<i>Disclaimer: This took 5-6 hours to produce with dataAmount set to 1000</i>
+<i>Disclaimer: This took 5-6 hours to produce with dataAmount set to 1000 and it is still not very accurate</i>
+
+### Classification
+
+<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/Classification.png?raw=true' alt='Classification' title='Classification'>
+
+Inspired by [A Neural Network Playground](https://playground.tensorflow.org) by Tensorflow
 
 ## Links/Resources  
 

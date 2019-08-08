@@ -37,7 +37,7 @@ function setup () {
 	}
 }
 function resume () {
-	let dataAmount = 100;
+	let dataAmount = 1000;
 	let Y_train = [];
 	let Y_train_shape = [ 1, dataAmount ];
 	let X_train = [];
@@ -58,7 +58,7 @@ function resume () {
 	model.addDenseLayer(200, X_train_shape[0], 'xavier', 'sigmoid');
 	model.addDenseLayer(50, 0, 'xavier', 'sigmoid');
 	model.addDenseLayer(1, 0, 'xavier', 'sigmoid');
-	for (let i = 0; i < 100; i++) {
+	for (let i = 0; i < 500; i++) {
 		model.train(1, X_train, X_train_shape, Y_train, Y_train_shape);
 		console.log('Cost at epoch ' + model.epoch + ': ' + model.cost);
 	}
