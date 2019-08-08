@@ -29,17 +29,13 @@ function setup () {
 	}
 	xs = inputs;
 	xs_shape = [ xs.length / 2, 2 ];
-	let dataAmount = 1;
+	let dataAmount = 100;
 	// Inner circle
 	for (let i = 0; i < dataAmount; i++) {
 		let a = Math.random() * 2 * Math.PI;
 		let r = 0.25 * Math.sqrt(Math.random());
 		train_xs.push(r * Math.cos(a) + 0.5);
 		train_ys.push(r * Math.sin(a) + 0.5);
-	}
-	for (let i = 0; i < dataAmount; i++) {
-		X_train.push(train_xs[i]);
-		X_train.push(train_ys[i]);
 	}
 	for (let i = 0; i < dataAmount; i++) {
 		Y_train.push(0);
@@ -53,8 +49,10 @@ function setup () {
 		train_xs.push(r * Math.cos(a) + 0.5);
 		train_ys.push(r * Math.sin(a) + 0.5);
 	}
-	for (let i = dataAmount; i < 2 * dataAmount; i++) {
+	for (let i = 0; i < 2 * dataAmount; i++) {
 		X_train.push(train_xs[i]);
+	}
+	for (let i = 0; i < 2 * dataAmount; i++) {
 		X_train.push(train_ys[i]);
 	}
 	X_train_shape = [ 2, 2 * dataAmount ];
@@ -62,16 +60,6 @@ function setup () {
 		Y_train.push(1);
 	}
 	Y_train_shape = [ 1, 2 * dataAmount ];
-
-	X_train = [ 0, 1, 1, 0, 1, 1, 0, 0 ];
-	X_train_shape = [ 2, 4 ];
-	Y_train = [ 0, 0, 1, 1 ];
-	Y_train_shape = [ 1, 4 ];
-
-	// X_train = [ 0.25, 0.75, 0.75, 0.25, 0.75, 0.75, 0.25, 0.25 ];
-	// X_train_shape = [ 2, 4 ];
-	// Y_train = [ 0, 0, 1, 1 ]; // Flipped b/c p5js axis are flipped
-	// Y_train_shape = [ 1, 4 ];
 
 	model = new NeuralNetwork(0.1);
 	model.addDenseLayer(5, X_train_shape[0], 'xavier', 'tanh');
@@ -94,7 +82,7 @@ function setup () {
 }
 
 function draw () {
-	model.train(500, X_train, X_train_shape, Y_train, Y_train_shape);
+	model.train(10, X_train, X_train_shape, Y_train, Y_train_shape);
 	console.log(`Cost at epoch ${model.epoch}: ${model.cost}`);
 	[ pred, pred_shape ] = model.predict(xs, xs_shape[0], xs_shape[1]);
 
@@ -111,15 +99,13 @@ function draw () {
 				index++;
 			}
 		}
-		for (let i = 0; i < X_train.length; i += X_train_shape[0]) {
+		for (let i = 0; i < X_train.length / 2; i++) {
 			let x = scaleNum(X_train[i], 0, 1, 0, width);
-			let y = scaleNum(X_train[i + 1], 0, 1, 0, height);
+			let y = scaleNum(X_train[i + X_train_shape[1]], 0, 1, 0, height);
 			strokeWeight(12);
 			stroke(0);
 			point(x, y);
-			Y_train[i / X_train_shape[0]] == 0
-				? stroke(color(color1[0], color1[1], color1[2]))
-				: stroke(color(color2[0], color2[1], color2[2]));
+			Y_train[i] == 1 ? stroke(color(color1[0], color1[1], color1[2])) : stroke(color(color2[0], color2[1], color2[2]));
 			strokeWeight(10);
 			point(x, y);
 		}
