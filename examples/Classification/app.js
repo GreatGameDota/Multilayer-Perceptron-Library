@@ -1,4 +1,4 @@
-let resolution = 15,
+let resolution = 5,
 	model = 0,
 	pred = 0,
 	pred_shape = 0,
