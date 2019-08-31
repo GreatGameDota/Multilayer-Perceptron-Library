@@ -24,7 +24,11 @@ class NeuralNetwork {
 		let [ temp2, temp2_shape ] = mf.square(temp, temp_shape[0], temp_shape[1]);
 		let [ temp3, temp3_shape ] = mf.sum(temp2, temp2_shape[0], temp2_shape[1], 1);
 		this.cost = 1 / (2 * m);
-		this.cost *= temp3;
+		let total = 0;
+		for (let i = 0; i < rowY; i++) {
+			total += temp3[i];
+		}
+		this.cost *= total / rowY;
 		let [ temp4, temp4_shape ] = mf.mult(temp, temp_shape[0], temp_shape[1], -1 / m);
 		return [ temp4, temp4_shape ];
 	}

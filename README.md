@@ -6,7 +6,7 @@ Base functions for layer math ported from python from NothingButNumpy blog serie
 Matrix function library made by [GreatGameDota](https://github.com/GreatGameDota) .  
 Library inspired by Tensorflow.js  
 
-<i>Disclaimer: This library is very slow for large data sets and can only handle one output</i>
+<i>Disclaimer: This library is very slow for large data sets</i>
 
 ## Examples  
 
@@ -35,6 +35,10 @@ After downloading put the files in a folder called 'csv' in the MNIST folder the
 <img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/Classification.png?raw=true' alt='Classification' title='Classification' width='200px' height='200px'>
 
 Inspired by [A Neural Network Playground](https://playground.tensorflow.org) by Tensorflow
+
+### Multiple Outputs
+
+<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/2Outputs.png?raw=true' alt='2 outputs' title='2 outputs' width='305px' height='105px'>
 
 ## Links/Resources  
 
