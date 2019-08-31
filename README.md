@@ -38,7 +38,7 @@ Inspired by [A Neural Network Playground](https://playground.tensorflow.org) by 
 
 ### Multiple Outputs
 
-<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/2Outputs.png?raw=true' alt='2 outputs' title='2 outputs' width='305px' height='105px'>
+<img src='https://github.com/GreatGameDota/neural-network-library/blob/master/images/2Outputs.png?raw=true' alt='2 outputs' title='2 outputs' width='610px' height='210px'>
 
 ## Links/Resources  
 
