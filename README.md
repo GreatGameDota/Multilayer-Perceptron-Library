@@ -42,5 +42,5 @@ Inspired by [A Neural Network Playground](https://playground.tensorflow.org) by 
 
 ## Links/Resources  
 
-[Medium Article](https://medium.com/towards-artificial-intelligence/nothing-but-numpy-understanding-creating-neural-networks-with-computational-graphs-from-scratch-6299901091b0)([Repo link](https://github.com/RafayAK/NothingButNumPy))
+[Medium Article](https://medium.com/towards-artificial-intelligence/nothing-but-numpy-understanding-creating-neural-networks-with-computational-graphs-from-scratch-6299901091b0) ([Repo link](https://github.com/RafayAK/NothingButNumPy))  
 [p5js](https://p5js.org/)  
