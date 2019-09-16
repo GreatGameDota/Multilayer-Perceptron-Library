@@ -33,9 +33,10 @@ function setup () {
 	Y_train_shape = [ 2, 4 ];
 
 	model = new NeuralNetwork(1);
-	model.addDenseLayer(5, X_train_shape[0], 'xavier', 'sigmoid');
-	model.addDenseLayer(3, 0, 'xavier', 'sigmoid');
-	model.addDenseLayer(2, 0, 'xavier', 'sigmoid');
+	model.addDenseLayer(5, X_train_shape[0], 'xavier', 'tanh');
+	model.addDenseLayer(3, 0, 'xavier', 'tanh');
+	model.addDenseLayer(3, 0, 'xavier', 'tanh');
+	model.addDenseLayer(2, 0, 'xavier', 'tanh');
 }
 
 function draw () {
